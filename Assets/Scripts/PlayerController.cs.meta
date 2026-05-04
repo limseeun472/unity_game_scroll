@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 05f8cefdf5a15b649ba823161b044a76
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - idleController: {fileID: 9100000, guid: e4cff99bdcba65045bd79a993cb7a7cd, type: 2}
+  - jumpController: {fileID: 9100000, guid: 6b699db585fc4864680c1c3ee932e735, type: 2}
+  - runController: {fileID: 9100000, guid: 02b1ea4278e1d6641a652b9a8540fbac, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
