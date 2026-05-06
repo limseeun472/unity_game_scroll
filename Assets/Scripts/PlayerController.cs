@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private bool isJumping = false;
     private float jumpTimer = 0f;
     private Vector3 startPosition;
-    private bool isMovingRight = false;
+   
 
     [Header("Animation Controller")]
     public RuntimeAnimatorController idleController;
@@ -35,12 +35,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             moveDirection.x -= 1f;
-            isMovingRight = false; // 왼쪽 이동
+            
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             moveDirection.x += 1f;
-            isMovingRight = true; // 오른쪽 이동
+            
         }
 
         // 이동 방향이 바뀌면 스프라이트 뒤집기
