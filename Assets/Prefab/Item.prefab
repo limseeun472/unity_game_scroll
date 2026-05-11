@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 53729133946134527}
   - component: {fileID: 2386118807229053328}
   - component: {fileID: 5701417312290255853}
+  - component: {fileID: -6946673883104093893}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -169,3 +170,19 @@ PolygonCollider2D:
       - {x: 0.085, y: 0.015}
       - {x: 0.085, y: 0.095}
   m_UseDelaunayMesh: 1
+--- !u!114 &-6946673883104093893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408982577446268803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e979d721d17508d42974fb39a3b7a750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemMover
+  scrollSpeed: 5
+  targetCamera: {fileID: 0}
+  isObstacle: 0
+  collisionSound: {fileID: 8300000, guid: c79c403993f51424aa2082df4457f619, type: 3}

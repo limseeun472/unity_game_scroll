@@ -9,7 +9,7 @@ public class ItemMover : MonoBehaviour
 
     public bool isObstacle = false;
 
-
+    public AudioClip collisionSound;
 
     float GetCameraLeftX()
     {
@@ -40,7 +40,14 @@ public class ItemMover : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        GameManager.Instance?.AddScore();
+        if (isObstacle)
+            GameManager.Instance?.TakeDamage();
+        else
+            GameManager.Instance?.AddScore();
+
+        if (collisionSound != null)
+            AudioSource.PlayClipAtPoint(collisionSound, transform.position);
+
         Destroy(gameObject);
     }
 }

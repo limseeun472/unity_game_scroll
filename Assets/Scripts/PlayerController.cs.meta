@@ -7,6 +7,7 @@ MonoImporter:
   - idleController: {fileID: 9100000, guid: e4cff99bdcba65045bd79a993cb7a7cd, type: 2}
   - jumpController: {fileID: 9100000, guid: 6b699db585fc4864680c1c3ee932e735, type: 2}
   - runController: {fileID: 9100000, guid: 02b1ea4278e1d6641a652b9a8540fbac, type: 2}
+  - crouchController: {fileID: 9100000, guid: 0f36a994c1e79ee4d85d581934aab07c, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public RuntimeAnimatorController idleController;
     public RuntimeAnimatorController jumpController;
     public RuntimeAnimatorController runController;
+    public RuntimeAnimatorController crouchController;
 
     private Animator animator;
 
@@ -35,30 +36,47 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             moveDirection.x -= 1f;
-            
         }
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             moveDirection.x += 1f;
-            
         }
 
-        // 이동 방향이 바뀌면 스프라이트 뒤집기
+        // 스프라이트 방향 전환
         if (moveDirection.x > 0f)
         {
-            spriteRenderer.flipX = false; // 오른쪽 바라봄
+            spriteRenderer.flipX = false;
         }
         else if (moveDirection.x < 0f)
         {
-            spriteRenderer.flipX = true; // 왼쪽 바라봄
+            spriteRenderer.flipX = true;
         }
 
-        if (!isJumping)
+        // 점프 시작
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
-            if (moveDirection.x != 0f)
+            StartJump();
+        }
+
+        // 점프 중 처리
+        if (isJumping)
+        {
+            UpdateJump();
+        }
+        else
+        {
+            // 엎드리기
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                animator.runtimeAnimatorController = crouchController;
+            }
+            // 달리기
+            else if (moveDirection.x != 0f)
             {
                 animator.runtimeAnimatorController = runController;
             }
+            // 기본 대기
             else
             {
                 animator.runtimeAnimatorController = idleController;
@@ -66,17 +84,8 @@ public class PlayerController : MonoBehaviour
         }
 
         moveDirection = moveDirection.normalized;
+
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
-
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
-        {
-            StartJump();
-        }
-
-        if (isJumping)
-        {
-            UpdateJump();
-        }
     }
 
     void StartJump()

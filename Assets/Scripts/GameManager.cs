@@ -20,10 +20,21 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Camera targetCamera;
 
-    [SerializeField] private float scrollSpeed = 10f;
+
 
     [SerializeField]
     TextMeshProUGUI scoreText;
+
+    [SerializeField]
+    public float scrollSpeed = 10f;
+
+    [SerializeField]
+    float speedIncreaseRate = 0.5f;
+
+    [SerializeField]
+    float maxScrollSpeed = 30f;
+
+    private float distance = 0f;
 
     float itemSpawnTimer;
     int itemSpawnCount;
@@ -36,6 +47,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject obstaclePrefab;
 
     [SerializeField] private int itemsPerObstacle = 5;
+
+  
+
+    [SerializeField]
+    TextMeshProUGUI distanceText;
 
 
     public static GameManager Instance { get; private set; }
@@ -58,6 +74,14 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (isGameOver) return;
+
+        scrollSpeed = Mathf.Min(scrollSpeed + speedIncreaseRate * Time.deltaTime, maxScrollSpeed);
+        Debug.Log($"Scroll Speed: {scrollSpeed}");
+        
+        distance += scrollSpeed * Time.deltaTime;
+
+        if (distanceText != null)
+            distanceText.text = $"Distance: {(int)distance}m";
 
         itemSpawnTimer += Time.deltaTime;
 
