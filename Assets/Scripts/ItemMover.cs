@@ -11,6 +11,8 @@ public class ItemMover : MonoBehaviour
 
     public AudioClip collisionSound;
 
+    public int bonusScore = 0;
+
     float GetCameraLeftX()
     {
         Camera cam = targetCamera != null ? targetCamera : Camera.main;
@@ -43,7 +45,7 @@ public class ItemMover : MonoBehaviour
         if (isObstacle)
             GameManager.Instance?.TakeDamage();
         else
-            GameManager.Instance?.AddScore();
+            GameManager.Instance?.AddScore(bonusScore > 0 ? bonusScore : 1);
 
         if (collisionSound != null)
             AudioSource.PlayClipAtPoint(collisionSound, transform.position);
